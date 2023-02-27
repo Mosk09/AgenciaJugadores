@@ -8,7 +8,8 @@
     /* background-color: rgba(255, 255, 255, 0.5); */
     background-color: var(--boton-bg-hover-color2);
     padding: 20px;
-    width: 180px;
+    width: 220px;
+    height: 260px;
     border-radius:84% 16% 91% 9% / 28% 66% 34% 72% ;
 }
 .select{
@@ -27,6 +28,7 @@
     background-color: rgb(37, 37, 37);
     border-radius:84% 16% 91% 9% / 28% 66% 34% 72% ;
     transition: 0.3s ease;
+    font-family: "Sansita", sans-serif;
 }
 .select:hover{
     border-radius: 5px;

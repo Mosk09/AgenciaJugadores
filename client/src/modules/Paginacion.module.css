@@ -6,13 +6,14 @@
 }
 .button{
     color: var(--text-color);
-    border: 1px solid var(--text-color);
+    border: none;
     background-color: var(--boton-bg-color);
-    border-radius: 5px;
+    border-radius:84% 16% 91% 9% / 28% 66% 34% 72% ;
     font-family: "Sansita", sans-serif;
-    font-size: 16px;
-    margin: 3px;
+    font-size: 26px;
+    margin: 5px;
     transition: 0.3s ease;
+    box-shadow: 0 1px 2px 3px rgb(32, 32, 32, 0.9);
 }
 .button:hover {
     background-color: var(--boton-bg-hover-color);

@@ -1,8 +1,8 @@
 .card{
 display: flex;
 flex-direction: column;
-width: 160px;
-height: 240px;
+width: 190px;
+height: 290px;
 background-color: transparent;
 border-radius: 5px;
 box-shadow: 2px 2px 20px black;
@@ -38,7 +38,7 @@ cursor: pointer;
 }
 .nombre{
     /* font-family: "Sedgwick Ave Display", cursive; */
-    font-size: 17px;
+    font-size: 20px;
     font-family: "Sansita", sans-serif;
     padding-bottom: 5px;
     text-shadow: 1px 1px 2px rgb(190, 190, 190);
@@ -51,7 +51,7 @@ cursor: pointer;
     font-family: "Sansita", sans-serif;
     /* font-family: "Sedgwick Ave Display", cursive; */
     margin-left: 5px;
-   font-size: 12px;
+   font-size: 16px;
 }
 .divEstad{
 display: grid;
@@ -69,7 +69,7 @@ align-items: center;
 
 .buttonFav{
     position: absolute;
-    font-size: 22px;
+    font-size: 25px;
     right: 9px;
     top: 3px;
     border: none;
@@ -96,13 +96,12 @@ border: 1px solid rgb(14, 119, 0);
 }
 .span1{
    display: flex;
-
-    font-size: 13px;
+    font-size: 16px;
 font-weight: bold;
 }
 .bandaLateral::before{
     content: "Libre";
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
 }
 .bandalateralFalse{
@@ -121,6 +120,6 @@ font-weight: bold;
 }
 .bandalateralFalse::before{
     content: "Contratado";
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
 }
