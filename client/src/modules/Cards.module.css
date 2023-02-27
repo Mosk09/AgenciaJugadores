@@ -1,0 +1,126 @@
+.card{
+display: flex;
+flex-direction: column;
+width: 160px;
+height: 240px;
+background-color: transparent;
+border-radius: 5px;
+box-shadow: 2px 2px 20px black;
+color: var(--text-color);
+transition: 0.4s ease;
+margin: 15px;
+position: relative;
+/* border: 4px solid transparent; */
+cursor: pointer;
+}
+.img{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 65%;
+    max-height: 65%;
+    object-fit: cover;
+    /* border: 1px solid var(--boton-bg-hover-color); */
+    border-radius:88% 12% 82% 18% / 10% 91% 9% 90%  ;
+    transition: 0.3s ease;
+    
+}
+.cardBody{
+    height: 100%;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+    background-color: rgb(37, 37, 37);
+    text-align: center;
+     /* border: 2px solid var(--boton-bg-hover-color); */
+
+}
+.nombre{
+    /* font-family: "Sedgwick Ave Display", cursive; */
+    font-size: 17px;
+    font-family: "Sansita", sans-serif;
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 2px rgb(190, 190, 190);
+    transition: 0.3s ease;
+    
+}
+.span{
+    text-align: start;
+    margin-bottom: 5px;
+    font-family: "Sansita", sans-serif;
+    /* font-family: "Sedgwick Ave Display", cursive; */
+    margin-left: 5px;
+   font-size: 12px;
+}
+.divEstad{
+display: grid;
+grid-template-columns: 50% 50%;
+justify-content: start;
+align-items: center;
+}
+.card:hover{
+    transform: scale(1.05);
+}
+.card .img:hover{
+    border-radius: 5px 5px 0 0;
+
+}
+
+.buttonFav{
+    position: absolute;
+    font-size: 22px;
+    right: 9px;
+    top: 3px;
+    border: none;
+    background: none;
+    text-shadow: 1px 1px 1px rgb(27, 27, 27);
+}
+.icon{
+   color:red;
+}
+.bandaLateral{
+   
+    display: flex;
+position: absolute;
+width: 110px;
+height: 18px;
+justify-content: center;
+
+transform: rotate(-45deg);
+top:20px;
+left: -25px;
+background-color: rgb(7, 196, 0);
+clip-path: polygon(19.5% 0%, 79% 0%, 95.5% 100%, 3% 100%);
+border: 1px solid rgb(14, 119, 0);
+}
+.span1{
+   display: flex;
+
+    font-size: 13px;
+font-weight: bold;
+}
+.bandaLateral::before{
+    content: "Libre";
+    font-size: 11px;
+    font-weight: bold;
+}
+.bandalateralFalse{
+    content: "Contratado";
+    display: flex;
+    position: absolute;
+    width: 110px;
+    height: 18px;
+    justify-content: center;    
+    transform: rotate(-45deg);
+    top:20px;
+    left: -25px;
+    background-color: rgb(196, 0, 0);
+    clip-path: polygon(19.5% 0%, 79% 0%, 95.5% 100%, 3% 100%);
+    border: 1px solid rgb(119, 0, 0);
+}
+.bandalateralFalse::before{
+    content: "Contratado";
+    font-size: 11px;
+    font-weight: bold;
+}

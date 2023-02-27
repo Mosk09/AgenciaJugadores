@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansita&family=Sedgwick+Ave+Display&display=swap");
+
+.containerGral {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 495px;
+  width: 100%;
+}
+.contenedorTitulos {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  width: 544px;
+  height: 191px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  border-radius: 85% 15% 85% 15% / 26% 71% 29% 74% ;
+  /* margin-top: 10%; */
+  transition: 0.3s ease;
+  box-shadow: 0 2px 20px 10px rgba(255, 255, 255, 0.9);
+  
+}
+.contenedorTitulos:hover {
+  width: 548px;
+  height: 194px;
+  /* margin-top: 10%; */
+}
+.titulo {
+  color: var(--text-color);
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: 70px;
+}
+.subTitulo {
+  color: var(--text-color);
+  font-family: "Sansita", sans-serif;
+  font-size: 40px;
+}

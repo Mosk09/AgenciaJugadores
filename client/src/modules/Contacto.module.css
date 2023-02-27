@@ -1,0 +1,116 @@
+.container{
+    margin-top: 50px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.divTitle{
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    display:inline-block;    
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 20px 10px rgb(32, 32, 32, 0.9);
+    border-radius: 85% 15% 87% 13% / 27% 65% 35% 73% ;
+}
+.title{
+    padding: 5px;
+    margin: 15px;
+    font-family: "Sansita", sans-serif;
+    font-size: 30px;
+    
+    
+    
+}
+.divContactoInput{
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;
+    padding: 10px;
+    margin-left:5px ;
+    
+}
+.inputMensaje{
+    
+    border: none;
+    width: 100%;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+.inputEmail{
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.button{
+    
+    color: var(--text-color);
+    border: none;
+    background-color: rgb(165, 0, 0);
+    border-radius: 5px;
+    font-family: "Sansita", sans-serif;
+    margin: 3px;
+}
+.button:hover{
+    background-color: rgb(253, 19, 66);
+    box-shadow: 0 1px 2px 3px rgb(32, 32, 32, 0.9);
+}
+.labelEmail{
+    font-family: "Sansita", sans-serif;
+    font-size: 15px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 400px;
+    width: 450px;
+    height: 250px;
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* border-radius:93% 7% 93% 7% / 11% 92% 8% 89% ; */
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 10px rgb(32, 32, 32, 0.9);   
+}
+.img{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+
+    max-height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 10px 0 0 10px;
+    /* border-radius:88% 12% 82% 18% / 10% 91% 9% 90%  ; */
+    transition: 0.3s ease;
+
+}
+@media (max-width:520px){
+    .row{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        min-width: 200px;
+        width: 250px;
+        height: 400px;
+        background-color: rgba(255, 255, 255, 0.5);
+     
+        box-shadow: 0 2px 20px 10px rgb(32, 32, 32, 0.9);
+     
+        flex-direction: column;
+    }
+    .img{
+        border-radius: 10px 10px 0 0;
+        height: 50%;
+        width: 100%;
+    }
+
+}

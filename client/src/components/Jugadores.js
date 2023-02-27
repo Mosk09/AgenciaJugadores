@@ -1,0 +1,38 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getJugadores } from "../redux/actions";
+import Cards from "./Cards";
+import s from "../modules/Jugadores.module.css";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
+import Paginacion from "./Paginacion";
+import Filtros from "./Filtros";
+
+export default function Jugadores() {
+  const estado = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const jugadores = useSelector((state) => state.jugadores);
+
+  useEffect(() => {
+    jugadores.length === 0 && dispatch(getJugadores());
+  }, [estado.siguiente, estado.paginaActual]);
+
+  return (
+    <div className={s.cont}>
+      <Filtros />
+      <div className={s.cont2}>
+      <Paginacion />
+      <div className={`container ${s.container}`}>
+        {estado.filtroJugadores.length > 0
+          ? estado.filtroJugadores
+          .slice(estado.anterior, estado.siguiente)
+          ?.map((e, i) => <Cards key={i} prop={e} />)
+          : jugadores
+          ?.slice(estado.anterior, estado.siguiente)
+          ?.map((e, i) => <Cards key={i} prop={e} />)}
+      </div>
+      <Paginacion />
+          </div>
+    </div>
+  );
+}
