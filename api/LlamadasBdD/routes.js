@@ -1,12 +1,10 @@
 import { Router } from "express";
 import {
   deleteJugadores,
-  eliminarFoto,
   getByIdJugadores,
   getJugadores,
   postJugadores,
   putJugadores,
-  subirFotos,
 } from "./jugadorControllers.js";
 import {
   deleteUsuarios,
@@ -42,8 +40,5 @@ router.put("/usuario/:id", putUsuarios);
 //Eliminar usuario
 router.delete("/usuario/:id", deleteUsuarios);
 
-//subir fotos
-router.post("/upload", subirFotos);
-router.delete("/upload", eliminarFoto);
 
 export default router;

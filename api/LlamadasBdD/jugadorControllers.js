@@ -1,96 +1,89 @@
-
-import {Jugador} from "../BaseDeDatos/tablas/jugador.js"
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: "dq7o1joxe",
-  api_key: "841287791179364",
-  api_secret: "U6weoZpsiuAOHptEKtrYKK3U3nc",
-});
+import { Jugador } from "../BaseDeDatos/tablas/jugador.js";
+import { eliminarImagen, subirImagen } from "../libs/cloudinary.js";
+import fs from "fs-extra";
 //Llama a todos los jugadores
-export const getJugadores = async (req,res)=>{
-   try {      
-      const jugadores=  await Jugador.findAll()
-      res.json(jugadores)
-   } catch (error) {
-    console.log(error)
-   }
-}
+export const getJugadores = async (req, res) => {
+  try {
+    const jugadores = await Jugador.findAll();
+    res.json(jugadores);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
 //llama a jugadr por ID
-export const getByIdJugadores =  async (req,res)=>{
-    try {
-        const {id}= req.params
-        const pj=  await Jugador.findByPk(id)
-        res.json(pj)
-        
-    } catch (error) {
-        console.log(error)
-    }
-}
+export const getByIdJugadores = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const pj = await Jugador.findByPk(id);
+    res.json(pj);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
 //Agrega jugadores por objeto
-export const postJugadores =  async(req,res)=>{
-   try {   
-      const nuevoJugador = await Jugador.create(req.body)
-      res.json(nuevoJugador)
-   } catch (error) {
-      console.log(error)
-   }
-}
-//Actualiza jugadores por ID
-export const putJugadores = async (req, res)=>{
-   try {
-      const {id}= req.params
-      const jugadorViejo = await Jugador.findByPk(id)
-      jugadorViejo.set(req.body)
-      jugadorViejo.save()
-      res.json(jugadorViejo)
-   } catch (error) {
-    console.log(error)
-   }
-}
-//eliminar jugador
-export const deleteJugadores =  async(req,res)=>{
-    try {
-        const {id}= req.params
-        const jugadorViejo = await Jugador.destroy({where:{id}})
-   
-        res.send("Jugador eliminado")
-     } catch (error) {
-        console.log(error)
-     }
- }
- //Subir foto del jugador
- export const subirFotos = async (req, res, next) => {
-   try {
-     const { imagenes } = req.body;
-     let promises = [];
-   //   imagenes.forEach(async (e) => {
-   //     promises.push(
-   //       cloudinary.uploader.upload(e, {
-   //         folder: "CalviApp",
-   //       })
-   //     );
-   //   });
-   imagenes.forEach(async (e) => {      
-            const resp = await cloudinary.uploader.upload(e, {
-                 folder: "CalviApp",
-               })
-               promises.push(resp)             
-   })
-     const response = await Promise.all(promises);
-     res.send({response});
-   } catch (error) {
-     next(error);
-   }
- };
- //eliminar foto subida
- export const eliminarFoto = async (req,res)=>{
-   try {
-      const {public_id} = req.body
-     const borrarFoto = await cloudinary.uploader.destroy(public_id);
-     res.send(borrarFoto)
+export const postJugadores = async (req, res) => {
+  try {
+    let imagen;
+    if (req.files.imagen && !Array.isArray(req.files.imagen)) {
+      const result = await subirImagen(req.files.imagen.tempFilePath);
+      await fs.remove(req.files.imagen.tempFilePath);
+      imagen = [
+        {
+          url: result.secure_url,
+          public_id: result.public_id,
+        },
+      ];
+      req.body.imagen = imagen;
+    }
+    if (req.files.imagen && Array.isArray(req.files.imagen)) {
+      const imagen = [];
+      for (const img of req.files.imagen) {
+        const result = await subirImagen(img.tempFilePath);
+        await fs.remove(img.tempFilePath);
+        imagen.push({
+          url: result.secure_url,
+          public_id: result.public_id,
+        });
+      }
+      req.body.imagen = imagen;
+    }
+    const nuevoJugador = await Jugador.create(req.body);
 
-   } catch (error) {
-      
-   }
- }
+    res.json(nuevoJugador);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
+//Actualiza jugadores por ID
+export const putJugadores = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const jugadorViejo = await Jugador.findByPk(id);
+    jugadorViejo.set(req.body);
+    jugadorViejo.save();
+    res.json(jugadorViejo);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
+//eliminar jugador
+export const deleteJugadores = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const jugadorViejo1 = await Jugador.findByPk(id);
+    const jugadorViejo = await Jugador.destroy({ where: { id } });
+    if (jugadorViejo1.imagen) {
+      for (const img of jugadorViejo1.imagen) {
+        await eliminarImagen(img.public_id);
+      }
+    }
+    res.send("jugador eliminado");
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};

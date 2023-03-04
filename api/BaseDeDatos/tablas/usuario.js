@@ -13,7 +13,7 @@ export const Usuario = sequelize.define('usuario', {
       type: DataTypes.STRING,
       allowNull: false
     },
-    contraseña: {
+    pass: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -23,7 +23,6 @@ export const Usuario = sequelize.define('usuario', {
     },
     admin: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       defaultValue: false
     },
     clubes: {
@@ -32,6 +31,10 @@ export const Usuario = sequelize.define('usuario', {
     favoritos:{
       type: DataTypes.ARRAY(DataTypes.INTEGER)
     },
+    imagen:{
+      type:DataTypes.JSONB, 
+      defaultValue:"https://cdn-icons-png.flaticon.com/512/21/21104.png"
+    }
   }, {
     freezeTableName: true,
     timestamps: false

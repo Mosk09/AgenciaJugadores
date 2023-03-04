@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJugadores } from "../redux/actions";
-import Cards from "./Cards";
+import Cards from "../components/Cards";
 import s from "../modules/Jugadores.module.css";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import Paginacion from "./Paginacion";
-import Filtros from "./Filtros";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import Paginacion from "../components/Paginacion";
+import Filtros from "../components/Filtros";
 
 export default function Jugadores() {
   const estado = useSelector((state) => state);

@@ -38,8 +38,8 @@ export const Jugador = sequelize.define('jugador', {
       defaultValue:true,
     },
     imagen:{
-      type: DataTypes.STRING,
-      defaultValue:"https://media.istockphoto.com/id/514027839/es/foto/hombre-africano-salto-tirando-silueta-jugador-de-baloncesto.jpg?s=612x612&w=0&k=20&c=3hgaKH8DXO9d7WxJ9IvLogZrHJhhT0BzsdgLjKW8uqA="
+      type: DataTypes.JSONB,
+      defaultValue:"https://thumbs.dreamstime.com/b/caricatura-de-acci%C3%B3n-jugador-baloncesto-vector-gr%C3%A1fico-dibujo-200156988.jpg"
     }
   }, {
     freezeTableName: true,
