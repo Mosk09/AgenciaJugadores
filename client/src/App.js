@@ -4,6 +4,7 @@ import Home from "../src/components/Home";
 import Jugadores from "./components/Jugadores";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import SubirImagen from "./components/DropZone";
 function App() {
   return (
     <div className="App">
@@ -12,7 +13,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/jugadores" element={<Jugadores />} />
-          <Route />
+          <Route exact path="/nuevojugador" element={<SubirImagen />} />
         </Routes>
         <Footer />
       </Router>

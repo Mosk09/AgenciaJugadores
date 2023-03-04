@@ -145,7 +145,13 @@ export default function reducer(state = inicialState, action) {
         return {
             ...state,
             filtroJugadores:[]
-        }
+        };
+        case "SUBIR_FOTOS":
+          console.log("foto subida")
+          return{
+            ...state
+          }
+
     default: {
       return {
         ...state,

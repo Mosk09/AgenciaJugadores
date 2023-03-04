@@ -71,3 +71,14 @@ export function limpiarFiltros (libre) {
   }
 }
 
+//-------------->SUBIR FOTOS<------------------------
+export function subirFotos (imagenes) { 
+    return async function(dispatch){
+    const res = await axios.post("http://localhost:3001/upload",{imagenes});
+    console.log(res.data)
+      return dispatch({
+        type: "SUBIR_FOTOS",
+        // payload: res.data
+      })
+    }
+}

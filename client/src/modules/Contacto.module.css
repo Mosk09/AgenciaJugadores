@@ -92,6 +92,13 @@
     transition: 0.3s ease;
 
 }
+.logoLiga{
+    justify-self: center;
+    align-self: center;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
 @media (max-width:520px){
     .row{
         display: flex;

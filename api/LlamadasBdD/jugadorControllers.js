@@ -1,6 +1,12 @@
 
 import {Jugador} from "../BaseDeDatos/tablas/jugador.js"
+import { v2 as cloudinary } from "cloudinary";
 
+cloudinary.config({
+  cloud_name: "dq7o1joxe",
+  api_key: "841287791179364",
+  api_secret: "U6weoZpsiuAOHptEKtrYKK3U3nc",
+});
 //Llama a todos los jugadores
 export const getJugadores = async (req,res)=>{
    try {      
@@ -52,4 +58,39 @@ export const deleteJugadores =  async(req,res)=>{
      } catch (error) {
         console.log(error)
      }
+ }
+ //Subir foto del jugador
+ export const subirFotos = async (req, res, next) => {
+   try {
+     const { imagenes } = req.body;
+     let promises = [];
+   //   imagenes.forEach(async (e) => {
+   //     promises.push(
+   //       cloudinary.uploader.upload(e, {
+   //         folder: "CalviApp",
+   //       })
+   //     );
+   //   });
+   imagenes.forEach(async (e) => {      
+            const resp = await cloudinary.uploader.upload(e, {
+                 folder: "CalviApp",
+               })
+               promises.push(resp)             
+   })
+     const response = await Promise.all(promises);
+     res.send({response});
+   } catch (error) {
+     next(error);
+   }
+ };
+ //eliminar foto subida
+ export const eliminarFoto = async (req,res)=>{
+   try {
+      const {public_id} = req.body
+     const borrarFoto = await cloudinary.uploader.destroy(public_id);
+     res.send(borrarFoto)
+
+   } catch (error) {
+      
+   }
  }
