@@ -12,7 +12,7 @@ export default function Cards({prop}) {
     <div className={s.card}>
       <img
         className={s.img}
-        src={prop.imagen}
+        src={prop.imagen[0].url}
       />
       <div className={s.cardBody}>
         <h3 className={s.nombre}>{prop.nombre.toUpperCase()}</h3>
@@ -21,7 +21,7 @@ export default function Cards({prop}) {
           <span className={s.span}><i className="bi bi-check2-circle"> </i>{prop.nacimiento.slice(0,7)}</span>
         </div>
         <div className={s.divEstad}>
-          <span className={s.span}><i className="bi bi-check2-circle"> </i>{prop.altura} Metros</span>
+          <span className={s.span}><i className="bi bi-check2-circle"> </i>{prop.altura} M</span>
           <span className={s.span}><i className="bi bi-check2-circle"> </i>{prop.clubes}</span>
         </div>
       </div>

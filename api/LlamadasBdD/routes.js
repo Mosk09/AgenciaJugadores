@@ -11,8 +11,10 @@ import {
   getByIdUsuarios,
   getFavoritos,
   getUsuarios,
+  logIn,
   postUsuarios,
   putUsuarios,
+  registro,
 } from "./usuarioControllers.js";
 
 const router = Router();
@@ -39,6 +41,10 @@ router.post("/usuario", postUsuarios);
 router.put("/usuario/:id", putUsuarios);
 //Eliminar usuario
 router.delete("/usuario/:id", deleteUsuarios);
+
+//REGISTRO Y LOGIN
+router.post("/login", logIn);
+router.post("/registro", registro);
 
 
 export default router;

@@ -1,0 +1,54 @@
+.container0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form {
+  padding: 10px;
+  background-color: var(--boton-bg-hover-color2);
+  font-family: "Sansita", sans-serif;
+  color: var(--text-color);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 93% 7% 89% 11% / 6% 76% 24% 94%;
+  width: 400px;
+  /* height: 300px; */
+  gap: 5px;
+  margin-top: 64px;
+  margin-bottom: 105px;
+
+}
+.input{
+    display: inline-block;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 200px;
+    height: 35px;
+    margin-left: 10px;
+    background: rgb(53, 53, 53);  
+  }
+  .divSugerencia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .botonRegistro{
+    border: none;
+    background: none;
+    display: inline-block;
+    transition: 0.3s ease;
+  }
+  .botonRegistro:hover {
+ transform:scale(1.1);
+ font-weight: bold;
+ text-shadow: 2px 2px 2px white;
+  }

@@ -71,14 +71,48 @@ export function limpiarFiltros (libre) {
   }
 }
 
-//-------------->SUBIR FOTOS<------------------------
-export function subirFotos (imagenes) { 
+//-------------->CREAR JUGADOR<------------------------
+export function crearJugador (jugador) { 
     return async function(dispatch){
-    const res = await axios.post("http://localhost:3001/upload",{imagenes});
+      const form = new FormData()
+      for(let key in jugador){
+        form.append(key,jugador[key])
+      }
+    const res = await axios.post("http://localhost:3001/jugador",form,{
+      headers:{
+        "Content-Type":"multipart/form-data",
+      }
+    });
     console.log(res.data)
       return dispatch({
-        type: "SUBIR_FOTOS",
+        type: "CREAR_JUGADOR",
         // payload: res.data
       })
     }
+}
+//-------------------LOGIN Y REGISTRO-----------------------
+export function postRegister(payload) {
+  return async function (dispatch) {
+    await axios.post(
+      "http://localhost:3001/registro",
+      payload
+    );
+  };
+}
+export function logIn(payload) {
+  return async function (dispatch) {
+    let userDb = await axios.post("http://localhost:3001/login", payload);
+    const email = { email: userDb.data.usuario.email };
+    const admin = { admin: userDb.data.usuario.admin };
+    const token = { token: userDb.data.token };
+    
+    console.log({email,admin,token})
+    localStorage.setItem("email", email.email.split(":"));
+    localStorage.setItem("admin", admin.admin);
+    localStorage.setItem("token", token.token.split(":"));
+    return dispatch({
+      type: "LOGIN",
+      payload: userDb.data,
+    });
+  };
 }

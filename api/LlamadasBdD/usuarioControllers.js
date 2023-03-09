@@ -2,6 +2,8 @@ import { Usuario } from "../BaseDeDatos/tablas/usuario.js";
 import { Jugador } from "../BaseDeDatos/tablas/jugador.js";
 import { eliminarImagen, subirImagen } from "../libs/cloudinary.js";
 import fs from "fs-extra";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 //Llama a todos los usuarios
 export const getUsuarios = async (req, res) => {
@@ -81,7 +83,7 @@ export const deleteUsuarios = async (req, res) => {
     }
     res.send("usuario eliminado");
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     res.send(error.message);
   }
 };
@@ -101,4 +103,55 @@ export const getFavoritos = async (req, res) => {
     console.log(error);
     res.send(error.message);
   }
+};
+
+//Login y Registro
+
+export const registro = async (req, res) => {
+  try {
+    const { nombre, pass, email,admin } = req.body;
+    let pass1 = await bcrypt.hash(pass, 8);
+    const usuario = await Usuario.create({
+      nombre: nombre,
+      pass: pass1,
+      email: email,
+      admin: admin
+    });
+    let token = jwt.sign({ usuario: usuario }, "secret", {
+      expiresIn: "1d",
+    });
+
+    res.json({
+      usuario: usuario,
+      token: token,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+export const logIn = (req, res) => {
+  const { pass, email } = req.body;
+  Usuario.findOne({ where: { email: email } })
+    .then((usuario) => {
+      if (!usuario) {
+        res.status(404).send("Usuario no encontrado");
+      } else {
+        //autorizacion de pass
+        if (bcrypt.compareSync(pass, usuario.pass)) {
+          let token = jwt.sign({ usuario: usuario }, "secret", {
+            expiresIn: "1d",
+          });
+
+          res.json({
+            usuario: usuario,
+            token: token,
+          });
+        } else {
+          res.status(401).send("Contraseña incorrecta");
+        }
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ err });
+    });
 };

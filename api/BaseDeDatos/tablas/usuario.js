@@ -11,15 +11,16 @@ export const Usuario = sequelize.define('usuario', {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     pass: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true,
     },
     admin: {
       type: DataTypes.BOOLEAN,

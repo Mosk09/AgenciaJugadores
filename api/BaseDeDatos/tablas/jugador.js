@@ -7,7 +7,7 @@ export const Jugador = sequelize.define('jugador', {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      primaryKey:true,
+      primaryKey:true, 
     },
     nombre: {
       type: DataTypes.STRING,

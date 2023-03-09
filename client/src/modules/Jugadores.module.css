@@ -1,5 +1,6 @@
 .cont{
     display: flex;
+    min-height: 75.5vh;
 }
 .cont2{
     display: flex;

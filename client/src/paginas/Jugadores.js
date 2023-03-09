@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getJugadores } from "../redux/actions";
 import Cards from "../components/Cards";
 import s from "../modules/Jugadores.module.css";
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
 import Paginacion from "../components/Paginacion";
 import Filtros from "../components/Filtros";
-
 export default function Jugadores() {
   const estado = useSelector((state) => state);
   const dispatch = useDispatch();

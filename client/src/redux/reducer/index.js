@@ -8,6 +8,7 @@ const inicialState = {
   cantidadPaginas: [],
   filtroJugadores: [],
   loading: false,
+  favoritos:[]
 };
 
 export default function reducer(state = inicialState, action) {
@@ -148,11 +149,14 @@ export default function reducer(state = inicialState, action) {
             filtroJugadores:[]
         };
         case "SUBIR_FOTOS":
-          console.log(state.loading)
           return{
             ...state,
             loading: true
-          }
+          };
+          case "LOGIN":
+            return{
+              ...state,
+            }
 
     default: {
       return {
