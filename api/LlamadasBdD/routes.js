@@ -1,5 +1,12 @@
 import { Router } from "express";
 import {
+  deleteDestacados,
+  getByIdDestacados,
+  getDestacados,
+  postDestacados,
+  putDestacados,
+} from "./destacados.controllers.js";
+import {
   deleteJugadores,
   getByIdJugadores,
   getJugadores,
@@ -18,6 +25,7 @@ import {
 } from "./usuarioControllers.js";
 
 const router = Router();
+
 //Llama a todos los jugadores
 router.get("/jugador", getJugadores);
 //llama a jugadr por ID
@@ -42,9 +50,20 @@ router.put("/usuario/:id", putUsuarios);
 //Eliminar usuario
 router.delete("/usuario/:id", deleteUsuarios);
 
+//DESTACADOS
+//llama a los destacados
+router.get("/destacado", getDestacados);
+//llama a destacado por ID
+router.get("/destacado/:id", getByIdDestacados);
+//Agrega destacados por objeto
+router.post("/destacado", postDestacados);
+//Actualiza destacados por ID
+router.put("/destacado/:id", putDestacados);
+//Eliminar destacados
+router.delete("/destacado/:id", deleteDestacados);
+
 //REGISTRO Y LOGIN
 router.post("/login", logIn);
 router.post("/registro", registro);
-
 
 export default router;

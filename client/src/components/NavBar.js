@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "../../src/modules/NavBar.module.css";
 import Modal from '../components/Modal'
@@ -13,11 +13,18 @@ export default function NavBar({ modal,setModal }) {
   const irAHome =()=>{
     navigate("/")
   }
+  const handleLogout =()=>{
+    localStorage.clear()
+    navigate("/")
+  }
+  const token = localStorage.getItem("token")
 
+  useEffect(()=>{
+    
+  },[token])
   return (
     <div className={`container-fluid ${s.divContainer}`}>
-   <Modal modal={modal} setModal={setModal}>
-    
+   <Modal modal={modal} setModal={setModal}>    
     </Modal>   
       <div className={`container text-center ${s.container1}`}>
         <div className={s.row}>
@@ -38,10 +45,16 @@ export default function NavBar({ modal,setModal }) {
             <i className="bi bi-heart-fill"> </i>        
             <p>Favoritos</p>
           </div>
+           {
+             !token?
           <div className={`col-md-1  ${s.links}`}onClick={()=>setModal(!modal)}>            
             <i className="bi bi-door-open-fill"> </i>       
-            <p>SingIn/SingUp</p>
+           <p>SingIn/SingUp</p>
+          </div>: <div className={`col-md-1  ${s.links}`} onClick={handleLogout}>            
+            <i className="bi bi-door-closed-fill"> </i>       
+           <p>Log Out</p>
           </div>
+          }            
         </div>
       </div>
     </div>

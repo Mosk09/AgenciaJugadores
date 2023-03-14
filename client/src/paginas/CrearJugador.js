@@ -36,7 +36,16 @@ const navigate = useNavigate()
       }}
       onSubmit={async (values,actions)=>{
         dispatch(crearJugador(values))
-        navigate("/")
+        // navigate("/")
+        values = {
+          nombre:"",
+          clubes:"",
+          nacimiento:"",
+          altura:1.7,
+          posicion:"",
+          libre:true,
+          imagen:[],
+        }
       }}
         >
           {({handleSubmit, setFieldValue})=>(

@@ -15,8 +15,8 @@ export default function Register({ login, setLogin,modal, setModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRegister(input));
-    setModal(!modal)
-    navigate("/");
+    // setModal(!modal)
+    setLogin(!login);
   };
   const handleRegister = (e) => {
     e.preventDefault();

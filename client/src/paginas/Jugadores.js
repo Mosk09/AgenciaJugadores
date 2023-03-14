@@ -5,6 +5,7 @@ import Cards from "../components/Cards";
 import s from "../modules/Jugadores.module.css";
 import Paginacion from "../components/Paginacion";
 import Filtros from "../components/Filtros";
+import Buscador from "../components/Buscador";
 export default function Jugadores() {
   const estado = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function Jugadores() {
       <Filtros />
       <div className={s.cont2}>
       <Paginacion />
+        <Buscador/>
       <div className={`container ${s.container}`}>
         {estado.filtroJugadores.length > 0
           ? estado.filtroJugadores

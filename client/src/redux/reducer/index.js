@@ -8,7 +8,7 @@ const inicialState = {
   cantidadPaginas: [],
   filtroJugadores: [],
   loading: false,
-  favoritos:[]
+  favoritos: [],
 };
 
 export default function reducer(state = inicialState, action) {
@@ -143,24 +143,30 @@ export default function reducer(state = inicialState, action) {
         ...state,
         filtroJugadores: [...filtro5],
       };
-      case "LIMPIAR_FILTRO":
-        return {
-            ...state,
-            filtroJugadores:[]
-        };
-        case "SUBIR_FOTOS":
-          return{
-            ...state,
-            loading: true
-          };
-          case "LOGIN":
-            return{
-              ...state,
-            }
+    case "LIMPIAR_FILTRO":
+      return {
+        ...state,
+        filtroJugadores: [],
+      };
+    case "SUBIR_FOTOS":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "LOGIN":
+      return {
+        ...state,
+      };
+    case "BUSCADOR":
+      let filtroBusqueda = state.jugadores.filter((e)=> e.nombre.includes(action.payload))
+      return {
+        ...state,
+        filtroJugadores: [...filtroBusqueda],
+      };
 
     default: {
       return {
-        ...state,
+        ...state,      
       };
     }
   }

@@ -1,7 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Sansita&display=swap'); */
 .divContainer{
     height: 70px;
-    background-color: rgba(0, 70, 175, 0.5);
+    background-color: rgba(0, 21, 139, 0.7);
     box-shadow: 0 2px 20px 10px rgba(48, 48, 48, 0.9);
     position: sticky;
 }
@@ -19,7 +19,7 @@
 .imgLogo{
     width: 120px;
     height: 35px;   
-    filter: drop-shadow(10px 0px 2px rgb(230, 230, 230));
+    /* filter: drop-shadow(10px 0px 2px rgb(230, 230, 230)); */
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -32,7 +32,7 @@
     transition: 0.3s ease;
     color: var(--text-color);
     padding-bottom: 0;
-    text-shadow: 2px 2px 2px rgb(27, 27, 27);
+    /* text-shadow: 2px 2px 2px rgb(27, 27, 27); */
 }
 .links:hover {
     text-shadow: 3px 3px 3px rgb(0, 0, 0);

@@ -24,6 +24,7 @@ export const getByIdJugadores = async (req, res) => {
 };
 //Agrega jugadores por objeto
 export const postJugadores = async (req, res) => {
+  console.log(req.files)
   try {
     let imagen;
     if (req.files.imagen && !Array.isArray(req.files.imagen)) {

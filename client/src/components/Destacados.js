@@ -3,7 +3,7 @@ import CardsDestacadas from "./CardsDestacadas";
 import s from "../modules/Destacados.module.css";
 
 export default function Destacados() {
-  let prop = { nombre: "Leo Mosconi" };
+  let prop = { nombre: "Jugador Ejemplo" };
   return (
     <div className={`container ${s.container}`}>
         <div className={s.divTitle}>

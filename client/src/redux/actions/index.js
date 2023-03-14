@@ -116,3 +116,12 @@ export function logIn(payload) {
     });
   };
 }
+//----------------------------BUSCADOR----------------------------------
+export function buscador (nombre) {
+  return function(dispatch){
+    return dispatch({
+      type: "BUSCADOR",
+      payload:nombre
+    })
+  }
+}

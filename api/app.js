@@ -1,8 +1,6 @@
 import express from "express"
 import router from "./LlamadasBdD/routes.js"
 import cors from "cors"
-import "./BaseDeDatos/tablas/jugador.js";
-import "./BaseDeDatos/tablas/usuario.js";
 import bodyParser from "body-parser";
 import fileupload from "express-fileupload"
 
