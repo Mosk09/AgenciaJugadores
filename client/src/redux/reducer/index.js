@@ -67,7 +67,6 @@ export default function reducer(state = inicialState, action) {
         };
       }
       let filtro = state.jugadores.filter((e) => e.posicion === action.payload);
-      console.log(filtro);
       return {
         ...state,
         filtroJugadores: [...filtro],
@@ -169,6 +168,12 @@ export default function reducer(state = inicialState, action) {
         return {
           ...state,
           favoritos: action.payload,
+        };
+      case "DELETE_FAVORITOS":
+        let fav = state.favoritos.filter(e=> e.id !== action.payload)
+        return {
+          ...state,
+          favoritos: fav
         };
 
     default: {

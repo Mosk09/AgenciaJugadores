@@ -3,9 +3,10 @@ import {useDispatch} from "react-redux"
 import  { Field, Form, Formik, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import s from "../modules/CrearJugador.module.css";
-import { crearJugador } from "../redux/actions";
+import { crearDestacado } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
-export default function CrearJugador() {
+
+export default function CrearDestacado() {
 
   const dispatch = useDispatch()
   useEffect(() => {}, []);
@@ -17,24 +18,22 @@ const navigate = useNavigate()
       <Formik
       validationSchema={Yup.object({
         nombre:Yup.string().required("El nombre es Requerido"),
-        clubes:Yup.string(),
-        nacimiento: Yup.date(),
-        altura:Yup.number().min(1.5).max(2.4),
-        posicion:Yup.string(),
-        libre:Yup.boolean(),
+        puntos:Yup.number(),
+        asist: Yup.number(),
+        reb:Yup.number(),
+        val:Yup.number(),     
         
       })}
       initialValues={{
         nombre:"",
-        clubes:"",
-        nacimiento:"",
-        altura:1.7,
-        posicion:"",
-        libre:true,
+        puntos:0,
+        asist:0,
+        reb:0,
+        val:0,
         imagen:[],
       }}
       onSubmit={async (values,actions)=>{
-        dispatch(crearJugador(values))
+        dispatch(crearDestacado(values))
         // navigate("/")
         
       }}
@@ -48,30 +47,26 @@ const navigate = useNavigate()
           <Field className={s.input}type="text" placeholder="Nombre" name="nombre" />
           <ErrorMessage component="p"  className={s.error}name="nombre"/>
           </label>
-          <label>Clubes
+          <label>Puntos
 
-          <Field className={s.input}type="text"placeholder="clubes" name="clubes" />
-          <ErrorMessage component="p" className={s.error}name="clubes"/>
+          <Field className={s.input}type="number"placeholder="puntos" name="puntos" />
+          <ErrorMessage component="p" className={s.error}name="puntos"/>
           </label>
-          <label>Categoria
+          <label>Asistencias
 
-          <Field className={s.input}type="month"placeholder="nacimiento" name="nacimiento" />
-          <ErrorMessage component="p" className={s.error}name="nacimiento"/>
+          <Field className={s.input}type="number"placeholder="asist" name="asist" />
+          <ErrorMessage component="p" className={s.error}name="asist"/>
           </label>
-          <label>Altura
+          <label>Rebotes
 
-          <Field className={s.input}type="decimal"placeholder="altura" name="altura" />
-          <ErrorMessage component="p" className={s.error}name="altura"/>
+          <Field className={s.input}type="number"placeholder="reb" name="reb" />
+          <ErrorMessage component="p" className={s.error}name="reb"/>
           </label>
-          <label>Posicion
+          <label>Valoracion
             
-          <Field className={s.input} type="text"placeholder="posicion" name="posicion" />
-          <ErrorMessage component="p" className={s.error}name="posicion"/>
+          <Field className={s.input} type="number"placeholder="val" name="val" />
+          <ErrorMessage component="p" className={s.error}name="val"/>
           </label>
-          <span>Disponibilidad
-            <Field className={s.inputCheck}type="checkbox"placeholder="libre" name="libre" />
-          <ErrorMessage component="p" className={s.error}name="libre"/>
-            </span>            
           <label>Sube una Imagen del jugador</label>
           <input type="file"placeholder="imagen" name="imagen" onChange={(e)=>setFieldValue("imagen", e.target.files[0])} />
           <button className={s.button} type="submit">Guardar</button>

@@ -108,16 +108,16 @@ export const getFavoritos = async (req, res) => {
 export const addFavoritos = async (req, res) => {
   try {
     const { id } = req.params;
-    const {idJugador}=req.body
- const usuarios = await Usuario.findByPk(id);
- let ashla = usuarios.favoritos.find(element => element===idJugador)
- if(ashla){
-  res.send("Ya tienes guardado este Jugador")
- }else {
-   usuarios.favoritos = [...usuarios.favoritos,idJugador]
-   await usuarios.save();
-   res.json(usuarios);
-  }
+    const { idJugador } = req.body;
+    const usuarios = await Usuario.findByPk(id);
+    let ashla = usuarios.favoritos.find((element) => element === idJugador);
+    if (ashla) {
+      res.send("Ya tienes guardado este Jugador");
+    } else {
+      usuarios.favoritos = [...usuarios.favoritos, idJugador];
+      await usuarios.save();
+      res.json(usuarios);
+    }
   } catch (error) {
     console.log(error);
     res.send(error.message);
@@ -127,11 +127,12 @@ export const addFavoritos = async (req, res) => {
 export const removeFavoritos = async (req, res) => {
   try {
     const { id } = req.params;
-    const {idJugador}=req.body
- const usuarios = await Usuario.findByPk(id);
- usuarios.favorito = usuarios.favorito.filter(e=>e===id.idJugador)
-     usuarios.save();
-   res.json(usuarios);
+    const { idJugador } = req.body;
+    const usuarios = await Usuario.findByPk(id);
+    let fav = usuarios.favoritos.filter((e) => e !== idJugador);
+    usuarios.favoritos = fav;
+    usuarios.save();
+    res.json(usuarios);
   } catch (error) {
     console.log(error);
     res.send(error.message);
@@ -141,13 +142,13 @@ export const removeFavoritos = async (req, res) => {
 
 export const registro = async (req, res) => {
   try {
-    const { nombre, pass, email,admin } = req.body;
+    const { nombre, pass, email, admin } = req.body;
     let pass1 = await bcrypt.hash(pass, 8);
     const usuario = await Usuario.create({
       nombre: nombre,
       pass: pass1,
       email: email,
-      admin: admin
+      admin: admin,
     });
     let token = jwt.sign({ usuario: usuario }, "secret", {
       expiresIn: "1d",

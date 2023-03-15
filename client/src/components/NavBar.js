@@ -5,6 +5,7 @@ import Modal from "../components/Modal";
 
 export default function NavBar({ modal, setModal }) {
   const navigate = useNavigate();
+  
   const irAJugadores = () => {
     navigate("/jugadores");
   };
@@ -31,7 +32,7 @@ export default function NavBar({ modal, setModal }) {
               src="/My project-1.png"
             ></img>
           </div>
-          <div className={`col-md-1 offset-md-6 ${s.links}`}>
+          <div className={`col-md-1 offset-md-6 ${s.links}`} onClick={irAHome}>
             <a className={s.a} href="#contacto">
               <i className="bi bi-envelope-fill"> </i>
               <p>Contactanos</p>

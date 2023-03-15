@@ -78,12 +78,11 @@ export function crearJugador (jugador) {
       for(let key in jugador){
         form.append(key,jugador[key])
       }
-    const res = await axios.post("http://localhost:3001/jugador",form,{
+    await axios.post("http://localhost:3001/jugador",form,{
       headers:{
         "Content-Type":"multipart/form-data",
       }
     });
-    console.log(res.data)
       return dispatch({
         type: "CREAR_JUGADOR",
         // payload: res.data
@@ -105,8 +104,7 @@ export function logIn(payload) {
     const email = { email: userDb.data.usuario.email };
     const admin = { admin: userDb.data.usuario.admin };
     const token = { token: userDb.data.token };
-    
-    console.log({email,admin,token})
+
     localStorage.setItem("email", email.email.split(":"));
     localStorage.setItem("admin", admin.admin);
     localStorage.setItem("token", token.token.split(":"));
@@ -135,9 +133,13 @@ export function addFavoritos(favorito) {
 }
 export function deleteFavoritos(favorito) {
   return async function (dispatch) {
-    await axios.post(
+   await axios.put(
       `http://localhost:3001/usuario/${favorito.id}/fav`,favorito
     );
+    return dispatch({
+      type: "DELETE_FAVORITOS",
+      payload: favorito.idJugador
+    })
   };
 }
 export function getFavoritos(id) {
@@ -148,4 +150,22 @@ export function getFavoritos(id) {
         payload: res.data
       })
     }
+}
+//-------------->CREAR DESTACADO<------------------------
+export function crearDestacado (jugador) { 
+  return async function(dispatch){
+    const form = new FormData()
+    for(let key in jugador){
+      form.append(key,jugador[key])
+    }
+ await axios.post("http://localhost:3001/destacado",form,{
+    headers:{
+      "Content-Type":"multipart/form-data",
+    }
+  });
+    return dispatch({
+      type: "CREAR_DESTACADO",
+      // payload: res.data
+    })
+  }
 }

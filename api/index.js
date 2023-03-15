@@ -5,7 +5,7 @@ import {sequelize} from './BaseDeDatos/db.js';
 // import "./BaseDeDatos/tablas/usuario.js";
 // import "./BaseDeDatos/tablas/destacados.js";
 (async () => {
-  await sequelize.sync({ force: true })
+  await sequelize.sync({ force: false })
   app.listen(3001,()=>{
     console.log("todo ok")
 

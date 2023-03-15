@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../modules/Cards.module.css";
-import { addFavoritos, removeFavoritos } from "../redux/actions";
+import { addFavoritos, deleteFavoritos } from "../redux/actions";
 
 export default function Cards({ prop }) {
   const dispatch = useDispatch();
+
+const estado = useSelector(state=>state)
 const usuario = useSelector(state=>state.usuario)
   const [fav, setFav] = useState(false);
   const [favorito, setFavorito] = useState();
   
   useEffect(() => {
    usuario && setFavorito({id:usuario.id, idJugador:prop.id})
+   let coso = estado.favoritos.find(e=>e.id===prop.id)
+   if(coso){
+    setFav(true)
+   }
   }, [usuario, prop.id])
   
   const handleFav = () => {
     if(fav){
       setFav(!fav);}
-    // dispatch(removeFavoritos)  
+    dispatch(deleteFavoritos(favorito))
     // }
     if(!fav){
-      setFav(!fav);
+      setFav(!fav); 
       favorito && dispatch(addFavoritos(favorito))  
       
     }
