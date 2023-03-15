@@ -30,7 +30,8 @@ export const Usuario = sequelize.define('usuario', {
       type: DataTypes.STRING
     },
     favoritos:{
-      type: DataTypes.ARRAY(DataTypes.INTEGER)
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      defaultValue: []
     },
     imagen:{
       type:DataTypes.JSONB, 

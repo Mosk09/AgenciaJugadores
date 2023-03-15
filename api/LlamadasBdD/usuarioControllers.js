@@ -104,7 +104,39 @@ export const getFavoritos = async (req, res) => {
     res.send(error.message);
   }
 };
-
+//Sumar  Jugador a Favoritos
+export const addFavoritos = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {idJugador}=req.body
+ const usuarios = await Usuario.findByPk(id);
+ let ashla = usuarios.favoritos.find(element => element===idJugador)
+ if(ashla){
+  res.send("Ya tienes guardado este Jugador")
+ }else {
+   usuarios.favoritos = [...usuarios.favoritos,idJugador]
+   await usuarios.save();
+   res.json(usuarios);
+  }
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
+//eliminar jugador de Favoritos
+export const removeFavoritos = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {idJugador}=req.body
+ const usuarios = await Usuario.findByPk(id);
+ usuarios.favorito = usuarios.favorito.filter(e=>e===id.idJugador)
+     usuarios.save();
+   res.json(usuarios);
+  } catch (error) {
+    console.log(error);
+    res.send(error.message);
+  }
+};
 //Login y Registro
 
 export const registro = async (req, res) => {

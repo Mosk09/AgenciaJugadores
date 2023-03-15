@@ -9,6 +9,7 @@ const inicialState = {
   filtroJugadores: [],
   loading: false,
   favoritos: [],
+  usuario:{},
 };
 
 export default function reducer(state = inicialState, action) {
@@ -156,6 +157,7 @@ export default function reducer(state = inicialState, action) {
     case "LOGIN":
       return {
         ...state,
+        usuario: action.payload.usuario
       };
     case "BUSCADOR":
       let filtroBusqueda = state.jugadores.filter((e)=> e.nombre.includes(action.payload))
@@ -163,6 +165,11 @@ export default function reducer(state = inicialState, action) {
         ...state,
         filtroJugadores: [...filtroBusqueda],
       };
+      case "GET_FAVORITOS":
+        return {
+          ...state,
+          favoritos: action.payload,
+        };
 
     default: {
       return {

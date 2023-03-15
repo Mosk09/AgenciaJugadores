@@ -1,4 +1,4 @@
-import SubirImagen from "../components/DropZone";
+import SubirImagen from "./DropZone";
 import { useEffect } from "react";
 import {useDispatch} from "react-redux"
 import  { Field, Form, Formik, ErrorMessage } from "formik"
@@ -37,15 +37,7 @@ const navigate = useNavigate()
       onSubmit={async (values,actions)=>{
         dispatch(crearJugador(values))
         // navigate("/")
-        values = {
-          nombre:"",
-          clubes:"",
-          nacimiento:"",
-          altura:1.7,
-          posicion:"",
-          libre:true,
-          imagen:[],
-        }
+        
       }}
         >
           {({handleSubmit, setFieldValue})=>(

@@ -125,3 +125,27 @@ export function buscador (nombre) {
     })
   }
 }
+//--------------------FAVORITOS----------------------------------------------
+export function addFavoritos(favorito) {
+  return async function (dispatch) {
+    await axios.post(
+      `http://localhost:3001/usuario/${favorito.id}/fav`,favorito
+    );
+  };
+}
+export function deleteFavoritos(favorito) {
+  return async function (dispatch) {
+    await axios.post(
+      `http://localhost:3001/usuario/${favorito.id}/fav`,favorito
+    );
+  };
+}
+export function getFavoritos(id) {
+  return async function(dispatch){
+    const res = await axios.get(`http://localhost:3001/usuario/${id}/fav`);
+      return dispatch({
+        type: "GET_FAVORITOS",
+        payload: res.data
+      })
+    }
+}

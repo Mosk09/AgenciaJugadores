@@ -14,6 +14,7 @@ import {
   putJugadores,
 } from "./jugadorControllers.js";
 import {
+  addFavoritos,
   deleteUsuarios,
   getByIdUsuarios,
   getFavoritos,
@@ -22,6 +23,7 @@ import {
   postUsuarios,
   putUsuarios,
   registro,
+  removeFavoritos,
 } from "./usuarioControllers.js";
 
 const router = Router();
@@ -43,6 +45,10 @@ router.get("/usuario", getUsuarios);
 router.get("/usuario/:id", getByIdUsuarios);
 //llama jugadores favoritos del usuario
 router.get("/usuario/:id/fav", getFavoritos);
+//Sumar jugador a Favoritos
+router.post("/usuario/:id/fav", addFavoritos);
+//eliminar jugador a Favoritos
+router.put("/usuario/:id/fav", removeFavoritos);
 //Agrega usuarios por objeto
 router.post("/usuario", postUsuarios);
 //Actualiza usuarios por ID

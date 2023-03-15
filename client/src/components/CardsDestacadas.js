@@ -12,6 +12,7 @@ export default function CardsDestacadas({prop}) {
     <div className={s.card}>
       <img
         className={s.img}
+        alt="foto"
         src="https://media.istockphoto.com/id/514027839/es/foto/hombre-africano-salto-tirando-silueta-jugador-de-baloncesto.jpg?s=612x612&w=0&k=20&c=3hgaKH8DXO9d7WxJ9IvLogZrHJhhT0BzsdgLjKW8uqA="
       />
       <div className={s.cardBody}>
