@@ -4,29 +4,37 @@ import { getFavoritos } from "../redux/actions";
 import Cards from "../components/Cards";
 import s from "../modules/Jugadores.module.css";
 
+
 export default function Favoritos() {
   const estado = useSelector((state) => state);
+  const {favoritos} = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("token");
+const token = localStorage.getItem("token")
+const id = localStorage.getItem("id")
   useEffect(() => {
-    token && dispatch(getFavoritos(estado.usuario.id));
-    console.log(estado.favoritos);
-    console.log(estado);
+    if(token){
+      estado.usuario.id?dispatch(getFavoritos(estado.usuario.id)): dispatch(getFavoritos(id))
+
+    }
+
   }, [token]);
+
 
   return (
     <div className={s.cont}>
       <div className={s.cont2}>
+  
+
         <div className={`container ${s.container}`}>
-          {estado.favoritos.length > 0 ? (
-            estado.favoritos?.map((e, i) => <Cards key={i} prop={e} />)
-          ) : (
+          {Array.isArray(estado.favoritos) && estado.favoritos.length> 0 ?  estado.favoritos?.map((e, i) => <Cards key={i} prop={e} />)
+          : 
             <div>
               <h1>No hay Jugadores Favoritos</h1>
             </div>
-          )}
+         }
         </div>
+
       </div>
     </div>
   );

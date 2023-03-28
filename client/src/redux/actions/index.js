@@ -103,10 +103,12 @@ export function logIn(payload) {
     let userDb = await axios.post("http://localhost:3001/login", payload);
     const email = { email: userDb.data.usuario.email };
     const admin = { admin: userDb.data.usuario.admin };
+    const id = { id: userDb.data.usuario.id };
     const token = { token: userDb.data.token };
 
     localStorage.setItem("email", email.email.split(":"));
     localStorage.setItem("admin", admin.admin);
+    localStorage.setItem("id", id.id);
     localStorage.setItem("token", token.token.split(":"));
     return dispatch({
       type: "LOGIN",
@@ -145,6 +147,7 @@ export function deleteFavoritos(favorito) {
 export function getFavoritos(id) {
   return async function(dispatch){
     const res = await axios.get(`http://localhost:3001/usuario/${id}/fav`);
+    
       return dispatch({
         type: "GET_FAVORITOS",
         payload: res.data

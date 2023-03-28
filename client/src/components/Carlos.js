@@ -5,7 +5,9 @@ export default function Carlos() {
     <div className={`container ${s.divCarlos0}`}>
 
     <div className={s.divCarlos}>
-        <img className={s.img} src="/istockphoto-481864562-612x612.jpg"/>
+      <div className={s.divImg}>
+        <img className={s.img} src="/calvi1.png"/>
+      </div>
         <div className={s.divtexto}>
             Mi nombre es Carlos Calvi soy representante de jugadores de basket.
              Llevo mas de 15 años en este rubro y mas de 100 jugadores a nivel pais que confian en mi.

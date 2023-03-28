@@ -10,24 +10,28 @@ const estado = useSelector(state=>state)
 const usuario = useSelector(state=>state.usuario)
   const [fav, setFav] = useState(false);
   const [favorito, setFavorito] = useState();
+  const token = localStorage.getItem("token")
+  const id = localStorage.getItem("id")
   
   useEffect(() => {
-   usuario && setFavorito({id:usuario.id, idJugador:prop.id})
-   let coso = estado.favoritos.find(e=>e.id===prop.id)
-   if(coso){
-    setFav(true)
-   }
-  }, [usuario, prop.id])
+  //  usuario && setFavorito({id:usuario.id, idJugador:prop.id})
+   id && setFavorito({id:id, idJugador:prop.id})
+     estado.favoritos.find(e=>e.id===prop.id) && setFav(true)
+  }, [id, prop.id, token, fav])
   
   const handleFav = () => {
-    if(fav){
-      setFav(!fav);}
-    dispatch(deleteFavoritos(favorito))
-    // }
-    if(!fav){
-      setFav(!fav); 
-      favorito && dispatch(addFavoritos(favorito))  
-      
+    if(token){
+      if(fav){
+        setFav(!fav);}
+      dispatch(deleteFavoritos(favorito))
+      // }
+      if(!fav){
+        setFav(!fav); 
+        favorito && dispatch(addFavoritos(favorito))  
+        
+      }
+    }else{
+      alert("Debes loguearte para añadir a favoritos")
     }
   };
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getJugadores } from "../redux/actions";
+import { getFavoritos, getJugadores } from "../redux/actions";
 import Cards from "../components/Cards";
 import s from "../modules/Jugadores.module.css";
 import Paginacion from "../components/Paginacion";
@@ -10,8 +10,10 @@ export default function Jugadores() {
   const estado = useSelector((state) => state);
   const dispatch = useDispatch();
   const jugadores = useSelector((state) => state.jugadores);
+  const id = localStorage.getItem("id")
 
   useEffect(() => {
+    id && dispatch(getFavoritos(id))
     jugadores.length === 0 && dispatch(getJugadores());
   }, [estado.siguiente, estado.paginaActual]);
 

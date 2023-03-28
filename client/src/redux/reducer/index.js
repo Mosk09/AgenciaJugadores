@@ -165,6 +165,7 @@ export default function reducer(state = inicialState, action) {
         filtroJugadores: [...filtroBusqueda],
       };
       case "GET_FAVORITOS":
+        
         return {
           ...state,
           favoritos: action.payload,

@@ -11,7 +11,6 @@ export const getUsuarios = async (req, res) => {
     const usuarios = await Usuario.findAll();
     res.json(usuarios);
   } catch (error) {
-    console.log(error);
     res.send(error.message);
   }
 };
@@ -22,7 +21,7 @@ export const getByIdUsuarios = async (req, res) => {
     const usuarios = await Usuario.findByPk(id);
     res.json(usuarios);
   } catch (error) {
-    console.log(error);
+   
     res.send(error.message);
   }
 };
@@ -52,7 +51,7 @@ export const postUsuarios = async (req, res) => {
     });
     res.json(nuevoUsuarios);
   } catch (error) {
-    console.log(error);
+
     res.send(error.message);
   }
 };
@@ -65,7 +64,7 @@ export const putUsuarios = async (req, res) => {
     usuarios.save();
     res.json(usuarios);
   } catch (error) {
-    console.log(error);
+  
     res.send(error.message);
   }
 };
@@ -83,7 +82,7 @@ export const deleteUsuarios = async (req, res) => {
     }
     res.send("usuario eliminado");
   } catch (error) {
-    console.log(error.message);
+ 
     res.send(error.message);
   }
 };
@@ -98,9 +97,10 @@ export const getFavoritos = async (req, res) => {
       let jugador = await Jugador.findByPk(ids);
       fav = [...fav, jugador];
     }
+    console.log({fav})
     res.json(fav);
   } catch (error) {
-    console.log(error);
+  
     res.send(error.message);
   }
 };
@@ -119,7 +119,7 @@ export const addFavoritos = async (req, res) => {
       res.json(usuarios);
     }
   } catch (error) {
-    console.log(error);
+
     res.send(error.message);
   }
 };
@@ -134,7 +134,7 @@ export const removeFavoritos = async (req, res) => {
     usuarios.save();
     res.json(usuarios);
   } catch (error) {
-    console.log(error);
+
     res.send(error.message);
   }
 };
@@ -151,7 +151,7 @@ export const registro = async (req, res) => {
       admin: admin,
     });
     let token = jwt.sign({ usuario: usuario }, "secret", {
-      expiresIn: "1d",
+      expiresIn: "1h",
     });
 
     res.json({
