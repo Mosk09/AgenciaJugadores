@@ -35,6 +35,7 @@ const navigate = useNavigate()
       onSubmit={async (values,actions)=>{
         dispatch(crearDestacado(values))
         // navigate("/")
+        alert("Jugador Destacado Creado")        
         
       }}
         >

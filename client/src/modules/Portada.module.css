@@ -37,3 +37,18 @@
   font-family: "Sansita", sans-serif;
   font-size: 40px;
 }
+@media (max-width:520px){
+  .contenedorTitulos{
+    width: 400px;
+  height: 391px;
+  }
+  .contenedorTitulos:hover {
+    width: 404px;
+    height: 394px;
+    /* margin-top: 10%; */
+  }
+  .containerGral{
+    height: 600px;
+  }
+
+}

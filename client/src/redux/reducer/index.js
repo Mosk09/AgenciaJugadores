@@ -9,7 +9,9 @@ const inicialState = {
   filtroJugadores: [],
   loading: false,
   favoritos: [],
-  usuario:{},
+  destacados: [],
+  usuario: {},
+  admin: false,
 };
 
 export default function reducer(state = inicialState, action) {
@@ -156,30 +158,41 @@ export default function reducer(state = inicialState, action) {
     case "LOGIN":
       return {
         ...state,
-        usuario: action.payload.usuario
+        usuario: action.payload.usuario,
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        usuario: {},
       };
     case "BUSCADOR":
-      let filtroBusqueda = state.jugadores.filter((e)=> e.nombre.includes(action.payload))
+      let filtroBusqueda = state.jugadores.filter((e) =>
+        e.nombre.includes(action.payload)
+      );
       return {
         ...state,
         filtroJugadores: [...filtroBusqueda],
       };
-      case "GET_FAVORITOS":
-        
-        return {
-          ...state,
-          favoritos: action.payload,
-        };
-      case "DELETE_FAVORITOS":
-        let fav = state.favoritos.filter(e=> e.id !== action.payload)
-        return {
-          ...state,
-          favoritos: fav
-        };
+    case "GET_FAVORITOS":
+      return {
+        ...state,
+        favoritos: action.payload,
+      };
+    case "DELETE_FAVORITOS":
+      let fav = state.favoritos.filter((e) => e.id !== action.payload);
+      return {
+        ...state,
+        favoritos: fav,
+      };
+    case "GET_DESTACADOS":
+      return {
+        ...state,
+        destacados: action.payload,
+      };
 
     default: {
       return {
-        ...state,      
+        ...state,
       };
     }
   }

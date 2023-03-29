@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardsDestacadas from "./CardsDestacadas";
 import s from "../modules/Destacados.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getDestacados } from "../redux/actions";
 
 export default function Destacados() {
-  let prop = { nombre: "Jugador Ejemplo" };
+  const { destacados } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    destacados.length === 0 && dispatch(getDestacados());
+  }, [dispatch, destacados]);
+
   return (
     <div className={`container ${s.container}`}>
-        <div className={s.divTitle}>
-      <span className={s.title}>DESTACADOS DE LA SEMANA</span>
-        </div>
+      <div className={s.divTitle}>
+        <span className={s.title}>DESTACADOS DE LA SEMANA</span>
+      </div>
       <div className={`col-10 ${s.divCards}`}>
-        <CardsDestacadas prop={prop} />
-        <CardsDestacadas prop={prop} />
-        <CardsDestacadas prop={prop} />
-        <CardsDestacadas prop={prop} />
-        <CardsDestacadas prop={prop} />
-        <CardsDestacadas prop={prop} />
+        {destacados &&
+          destacados?.map((e, i) => <CardsDestacadas key={i} prop={e} />)}
       </div>
     </div>
   );

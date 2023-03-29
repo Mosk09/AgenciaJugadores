@@ -116,6 +116,13 @@ export function logIn(payload) {
     });
   };
 }
+export function logOUT() {
+  return async function (dispatch) {   
+    return dispatch({
+      type: "LOGOUT"     
+    });
+  };
+}
 //----------------------------BUSCADOR----------------------------------
 export function buscador (nombre) {
   return function(dispatch){
@@ -169,6 +176,16 @@ export function crearDestacado (jugador) {
     return dispatch({
       type: "CREAR_DESTACADO",
       // payload: res.data
+    })
+  }
+}
+export function getDestacados (){
+  return async function(dispatch){
+    const res = await axios.get("http://localhost:3001/destacado")
+
+    return dispatch({
+      type:"GET_DESTACADOS",
+      payload: res.data
     })
   }
 }

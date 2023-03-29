@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import s from "../../src/modules/NavBar.module.css";
 import Modal from "../components/Modal";
+import { logOUT } from "../redux/actions";
 
 export default function NavBar({ modal, setModal }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   
   const irAJugadores = () => {
     navigate("/jugadores");
@@ -14,6 +17,7 @@ export default function NavBar({ modal, setModal }) {
   };
   const handleLogout = () => {
     localStorage.clear();
+    dispatch(logOUT())
     navigate("/");
   };
   const token = localStorage.getItem("token");
