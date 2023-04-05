@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../modules/Cards.module.css";
 import { addFavoritos, deleteFavoritos } from "../redux/actions";
+import swal from 'sweetalert';
 
 export default function Cards({ prop }) {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const usuario = useSelector(state=>state.usuario)
         
       }
     }else{
-      alert("Debes loguearte para añadir a favoritos")
+      swal("Debes loguearte para añadir a favoritos")
     }
   };
   return (

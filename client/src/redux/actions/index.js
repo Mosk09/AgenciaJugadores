@@ -89,6 +89,14 @@ export function crearJugador (jugador) {
       })
     }
 }
+export function deleteJugadores (id) { 
+    return async function(dispatch){
+      await axios.delete(`http://localhost:3001/jugador/${id}`);
+      return dispatch({
+        type: "DELETE_JUGADOR",
+      })
+    }
+}
 //-------------------LOGIN Y REGISTRO-----------------------
 export function postRegister(payload) {
   return async function (dispatch) {
@@ -128,7 +136,7 @@ export function buscador (nombre) {
   return function(dispatch){
     return dispatch({
       type: "BUSCADOR",
-      payload:nombre
+      payload:nombre.toLowerCase()
     })
   }
 }

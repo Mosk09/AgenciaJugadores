@@ -6,7 +6,7 @@ export default function Buscador() {
   const dispatch = useDispatch();
 
   const handleBuscador = async (e) => {
-    dispatch(buscador(e.target.value));
+    dispatch(buscador( e.target.value.toLowerCase()));
   };
   useEffect(() => {}, []);
 

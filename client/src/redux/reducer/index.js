@@ -167,7 +167,7 @@ export default function reducer(state = inicialState, action) {
       };
     case "BUSCADOR":
       let filtroBusqueda = state.jugadores.filter((e) =>
-        e.nombre.includes(action.payload)
+        e.nombre.toLowerCase().includes(action.payload)
       );
       return {
         ...state,
@@ -188,6 +188,10 @@ export default function reducer(state = inicialState, action) {
       return {
         ...state,
         destacados: action.payload,
+      };
+    case "DELETE_JUGADOR":
+      return {
+        ...state,
       };
 
     default: {

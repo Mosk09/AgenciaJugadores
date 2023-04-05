@@ -11,7 +11,7 @@ export default function Carlos() {
         <div className={s.divtexto}>
             Mi nombre es Carlos Calvi soy representante de jugadores de basket.
              Llevo mas de 15 años en este rubro y mas de 100 jugadores a nivel pais que confian en mi.
-             Si queres trabajar conmigo, no dudes en contactarte
+             
         </div>
     </div>
     </div>

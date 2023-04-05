@@ -3,8 +3,10 @@ import {useDispatch} from "react-redux"
 import  { Field, Form, Formik, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import s from "../modules/CrearJugador.module.css";
-import { crearJugador } from "../redux/actions";
+import { crearJugador, getJugadores } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
+
 export default function CrearJugador() {
 
   const dispatch = useDispatch()
@@ -34,8 +36,19 @@ const navigate = useNavigate()
         imagen:[],
       }}
       onSubmit={async (values,actions)=>{
-        dispatch(crearJugador(values))
-        // navigate("/")
+        const willDelete = await swal({
+          title: "Estas seguro?",
+          text: "Estas seguro de Crear este jugador?",
+          icon: "info",
+          // dangerMode: true,
+          buttons:["No", "Si"]      
+        });     
+        if (willDelete) {
+          await dispatch(crearJugador(values))
+          await dispatch(getJugadores())
+          swal("Un lujo!", "Nuevo Jugador Creado", "success");
+        }
+     
         
       }}
         >

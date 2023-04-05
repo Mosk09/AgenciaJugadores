@@ -37,7 +37,7 @@ export default function NavBar({ modal, setModal }) {
             ></img>
           </div>
           <div className={`col-md-1 offset-md-6 ${s.links}`} onClick={irAHome}>
-            <a className={s.a} href="#contacto">
+            <a className={s.links} href="#contacto">
               <i className="bi bi-envelope-fill"> </i>
               <p>Contactanos</p>
             </a>

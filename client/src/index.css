@@ -18,7 +18,10 @@ body {
   --boton-bg-color: rgb(160, 24, 114);
   --boton-bg-hover-color: rgb(255, 0, 170);
   --boton-bg-hover-color2: rgb(255, 0, 170,0.5);
-  --text-color : rgb(243, 243, 243);
+  --boton-bg-hover-color3: rgba(31, 44, 161, 0.5);
+  --text-color : rgb(255, 255, 255);
+  --text-color1 :rgb(229, 232, 255);
+  --text-color2 :rgb(248, 222, 239);
 }
 
 code {
