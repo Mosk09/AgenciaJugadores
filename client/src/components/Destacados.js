@@ -4,6 +4,8 @@ import s from "../modules/Destacados.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getDestacados } from "../redux/actions";
 
+
+
 export default function Destacados() {
   const { destacados } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -18,8 +20,8 @@ export default function Destacados() {
         <span className={s.title}>DESTACADOS DE LA SEMANA</span>
       </div>
       <div className={`col-10 ${s.divCards}`}>
-        {destacados &&
-          destacados?.map((e, i) => <CardsDestacadas key={i} prop={e} />)}
+        {destacados.length>0 ?
+          destacados?.map((e, i) => <CardsDestacadas key={i} prop={e} />):<h1>coso</h1>}
       </div>
     </div>
   );

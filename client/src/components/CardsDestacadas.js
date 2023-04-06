@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import s from "../modules/Cards.module.css";
+import s from "../modules/CardsDestacada.module.css";
 
 export default function CardsDestacadas({ prop }) {
   const [fav, setFav] = useState(false);
@@ -12,12 +12,12 @@ export default function CardsDestacadas({ prop }) {
       <div className={s.cardBody}>
         <h3 className={s.nombre}>{prop.nombre}</h3>
         <div className={s.divEstad}>
-          <span className={s.span}>Puntos- {prop.puntos}</span>
-          <span className={s.span}>Val- {prop.val}</span>
+          <span className={s.span2}>Puntos- {prop.puntos}</span>
+          <span className={s.span3}>Val- {prop.val}</span>
         </div>
         <div className={s.divEstad}>
-          <span className={s.span}>Asist- {prop.asist}</span>
-          <span className={s.span}>Reb- {prop.reb}</span>
+          <span className={s.span4}>Asist- {prop.asist}</span>
+          <span className={s.span5}>Reb- {prop.reb}</span>
         </div>
       </div>
       {/* <button className={s.buttonFav} onClick={handleFav}>

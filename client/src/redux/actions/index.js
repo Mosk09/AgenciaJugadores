@@ -89,6 +89,14 @@ export function crearJugador (jugador) {
       })
     }
 }
+export function ContratadoLibreJugador ({id,libre}) { 
+    return async function(dispatch){
+    await axios.put(`http://localhost:3001/jugador/${id}`,{"libre":libre});
+      return dispatch({
+        type: "CONTRATADO_LIBRE",
+      })
+    }
+}
 export function deleteJugadores (id) { 
     return async function(dispatch){
       await axios.delete(`http://localhost:3001/jugador/${id}`);
@@ -196,4 +204,12 @@ export function getDestacados (){
       payload: res.data
     })
   }
+}
+export function deleteDestacado (id) { 
+    return async function(dispatch){
+      await axios.delete(`http://localhost:3001/destacado/${id}`);
+      return dispatch({
+        type: "DELETE_DESTACADO",
+      })
+    }
 }

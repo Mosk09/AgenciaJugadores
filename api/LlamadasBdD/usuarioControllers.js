@@ -97,7 +97,6 @@ export const getFavoritos = async (req, res) => {
       let jugador = await Jugador.findByPk(ids);
       fav = [...fav, jugador];
     }
-    console.log({fav})
     res.json(fav);
   } catch (error) {
   

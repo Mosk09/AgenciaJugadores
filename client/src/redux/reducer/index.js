@@ -193,6 +193,14 @@ export default function reducer(state = inicialState, action) {
       return {
         ...state,
       };
+    case "DELETE_DESTACADO":
+      return {
+        ...state,
+      };
+    case "CONTRATADO_LIBRE":
+      return {
+        ...state,
+      };
 
     default: {
       return {

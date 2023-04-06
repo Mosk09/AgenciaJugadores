@@ -4,13 +4,22 @@ import { useNavigate } from "react-router-dom";
 import s from "../../src/modules/NavBar.module.css";
 import Modal from "../components/Modal";
 import { logOUT } from "../redux/actions";
+import swal from "sweetalert";
 
 export default function NavBar({ modal, setModal }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
   
   const irAJugadores = () => {
     navigate("/jugadores");
+  };
+  const irAFavoritos = () => {
+    if(token){
+      navigate("/favoritos");
+    }else {
+      swal("Debes Loguearte")
+    }
   };
   const irAHome = () => {
     navigate("/");
@@ -20,7 +29,6 @@ export default function NavBar({ modal, setModal }) {
     dispatch(logOUT())
     navigate("/");
   };
-  const token = localStorage.getItem("token");
 
   useEffect(() => {}, [token]);
   return (
@@ -49,7 +57,7 @@ export default function NavBar({ modal, setModal }) {
           {token && (
             <div
               className={`col-md-1  ${s.links}`}
-              onClick={() => navigate("/favoritos")}
+              onClick={() => irAFavoritos()}
             >
               <i className="bi bi-heart-fill"> </i>
               <p>Favoritos</p>

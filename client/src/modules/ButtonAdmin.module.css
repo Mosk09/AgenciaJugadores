@@ -4,15 +4,17 @@
   right: 30px;
 }
 .boton {
-  background-color: black;
+  background-color: rgba(15, 15, 15, 0.6);
+  font-family: "Sansita", sans-serif;
   cursor: pointer;
   border: none;
   padding: 6px 12px;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   position: relative;
   border-radius: 12px;
+  transition: 0.3s ease;
 }
 .boton::before {
   content: "";

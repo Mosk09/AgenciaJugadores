@@ -16,9 +16,9 @@ const usuario = useSelector(state=>state.usuario)
   
   useEffect(() => {
   //  usuario && setFavorito({id:usuario.id, idJugador:prop.id})
-   id && setFavorito({id:id, idJugador:prop.id})
-     estado.favoritos.find(e=>e.id===prop.id) && setFav(true)
-  }, [id, prop.id, token, fav])
+   id && setFavorito({"id":id, idJugador:prop?.id})
+      estado.favoritos.find((e)=>e?.id===prop?.id) && setFav(true)
+  }, [id, prop?.id, token, fav])
   
   const handleFav = () => {
     if(token){
@@ -37,27 +37,27 @@ const usuario = useSelector(state=>state.usuario)
   };
   return (
     <div className={s.card}>
-      <img className={s.img} src={prop.imagen[0].url} alt="Foto"/>
+      <img className={s.img} src={prop?.imagen[0].url} alt="Foto"/>
       <div className={s.cardBody}>
-        <h3 className={s.nombre}>{prop.nombre.toUpperCase()}</h3>
+        <h3 className={s.nombre}>{prop?.nombre.toUpperCase()}</h3>
         <div className={s.divEstad}>
           <span className={s.span}>
             <i className="bi bi-check2-circle"> </i>
-            {prop.posicion}
+            {prop?.posicion}
           </span>
           <span className={s.span}>
             <i className="bi bi-check2-circle"> </i>
-            {prop.nacimiento.slice(0, 7)}
+            {prop?.nacimiento.slice(0, 7)}
           </span>
         </div>
         <div className={s.divEstad}>
           <span className={s.span}>
             <i className="bi bi-check2-circle"> </i>
-            {prop.altura} M
+            {prop?.altura} M
           </span>
           <span className={s.span}>
             <i className="bi bi-check2-circle"> </i>
-            {prop.clubes}
+            {prop?.clubes}
           </span>
         </div>
       </div>
@@ -68,7 +68,7 @@ const usuario = useSelector(state=>state.usuario)
           <i className={`bi bi-heart ${s.icon}`}></i>
         )}
       </button>
-      <div className={prop.libre ? s.bandaLateral : s.bandalateralFalse}></div>
+      <div className={prop?.libre ? s.bandaLateral : s.bandalateralFalse}></div>
     </div>
   );
 }
