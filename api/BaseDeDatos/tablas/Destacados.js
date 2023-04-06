@@ -2,7 +2,7 @@ import  { DataTypes } from 'sequelize';
 import {sequelize} from '../db.js';
 
 // Definimos un modelo de datos llamado Jugador con las columnas nombre, apellido, edad y posicion.
-export const Destacados = sequelize.define('Destacados', {
+export const Destacados = sequelize.define('destacados', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
