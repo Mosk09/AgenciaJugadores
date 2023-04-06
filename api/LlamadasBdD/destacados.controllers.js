@@ -1,4 +1,4 @@
-import { Destacados } from "../BaseDeDatos/tablas/destacados.js";
+import { Destacados } from "../BaseDeDatos/tablas/Destacados.js";
 import { eliminarImagen, subirImagen } from "../libs/cloudinary.js";
 import fs from "fs-extra";
 //Llama a todos los Destacados
