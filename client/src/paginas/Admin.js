@@ -107,9 +107,6 @@ export default function Admin() {
                   <td>{e.clubes}</td>
                   <td>{e.posicion}</td>
                   <td>{e.nacimiento}</td>
-                  {/* <td>
-                    <button className={s.boton}>Up</button>
-                  </td> */}
                   <td>
                     <button className={s.boton} onClick={()=>handleLibre({"id":e.id, "libre":!e.libre})}>{e.libre?<p>Libre</p>:<p>Contratado</p>}</button>
                   </td>
