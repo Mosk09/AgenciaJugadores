@@ -120,9 +120,9 @@
 }
 .card:hover {
   transform: scale(1.05);
+  box-shadow: 5px 5px 10px rgb(255, 255, 255);
 }
 .card .img:hover {
- 
 }
 
 .buttonFav {

@@ -20,18 +20,21 @@ export default function Favoritos() {
   }, [token]);
 
   return (
-    <div className={s.cont}>
-      <div className={s.cont2}>
-        <div className={`container ${s.container}`}>
-          {Array.isArray(estado.favoritos) && estado.favoritos.length > 0 ? (
-            estado.favoritos?.map((e, i) => <Cards key={i} prop={e} />)
-          ) : (
-            <div>
-              <h1>No hay Jugadores Favoritos</h1>
-            </div>
-          )}
+    <>
+      <h2 className={s.titleTable}>Jugadores Favoritos</h2>
+      <div className={s.cont}>
+        <div className={s.cont2}>
+          <div className={`container ${s.container}`}>
+            {Array.isArray(estado.favoritos) && estado.favoritos.length > 0 ? (
+              estado.favoritos?.map((e, i) => <Cards key={i} prop={e} />)
+            ) : (
+              <div className={s.divSinFav}>
+                <h4 className={s.titleTable}>No hay Jugadores Favoritos</h4>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

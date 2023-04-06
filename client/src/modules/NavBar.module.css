@@ -16,7 +16,6 @@
 .imgLogo {
   width: 120px;
   height: 35px;
-  /* filter: drop-shadow(10px 0px 2px rgb(230, 230, 230)); */
   cursor: pointer;
   transition: 0.3s ease;
 }

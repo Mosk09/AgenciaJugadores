@@ -10,51 +10,35 @@
 .contenedorTitulos {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid white; */
   width: 544px;
   height: 191px;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(0, 0, 0, 0.3); */
-  /* border-radius: 90% 10% 89% 71% / 0% 82% 18% 100% ; */
-  /* margin-top: 10%; */
-  
   transition: 0.3s ease;
-  /* box-shadow: 0 2px 20px 10px rgba(255, 255, 255, 0.9); */
-  
-  
 }
-/* .contenedorTitulos:hover {
-  width: 548px;
-  height: 194px;
 
-} */
 .titulo {
   color: var(--text-color);
   font-family: "Sedgwick Ave Display", cursive;
   font-size: 75px;
-  text-shadow:2px 20px 5px rgba(0, 0,0),0px 0px 15px rgb(255, 255, 255);
-  
-  /* text-shadow: 0 2px 20px 10px rgba(0, 0, 0, 0.9); */
+  text-shadow: 2px 20px 5px rgba(0, 0, 0), 0px 0px 15px rgb(255, 255, 255);
 }
 .subTitulo {
   color: var(--text-color1);
   font-family: "Sansita", sans-serif;
   font-size: 40px;
-  text-shadow:2px 20px 5px rgba(0, 0, 0),0px 0px 15px rgb(255, 255, 255);; 
+  text-shadow: 2px 20px 5px rgba(0, 0, 0), 0px 0px 15px rgb(255, 255, 255);
 }
-@media (max-width:520px){
-  .contenedorTitulos{
+@media (max-width: 520px) {
+  .contenedorTitulos {
     width: 400px;
-  height: 391px;
+    height: 391px;
   }
   .contenedorTitulos:hover {
     width: 404px;
     height: 394px;
-    /* margin-top: 10%; */
   }
-  .containerGral{
+  .containerGral {
     height: 600px;
   }
-
 }

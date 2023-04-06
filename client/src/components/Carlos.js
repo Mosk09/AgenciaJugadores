@@ -6,7 +6,7 @@ export default function Carlos() {
 
     <div className={s.divCarlos}>
       <div className={s.divImg}>
-        <img className={s.img} src="/calvi1.png"/>
+        <img className={s.img} alt="foto"src="/calvi1.png"/>
       </div>
         <div className={s.divtexto}>
             Mi nombre es Carlos Calvi soy representante de jugadores de basket.

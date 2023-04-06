@@ -41,7 +41,7 @@ export default function CrearDestacado() {
             await dispatch(getDestacados());
             swal("Un lujo!", "Nuevo Destacado Creado", "success");
           }
-          actions.resetForm()
+          actions.resetForm();
         }}
       >
         {({ handleSubmit, setFieldValue }) => (

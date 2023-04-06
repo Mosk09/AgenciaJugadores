@@ -46,7 +46,7 @@ export default function CrearJugador() {
             await dispatch(getJugadores());
             swal("Un lujo!", "Nuevo Jugador Creado", "success");
           }
-          actions.resetForm()
+          actions.resetForm();
         }}
       >
         {({ handleSubmit, setFieldValue }) => (
